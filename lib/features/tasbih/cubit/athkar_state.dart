@@ -7,3 +7,4 @@ final class AthkarInitial extends AthkarState {}
 final class AthkarLoading extends AthkarState {}
 final class AthkarGetSuccess extends AthkarState {
 }
+

@@ -45,8 +45,10 @@ class _AthkarScreenState extends State<AthkarScreen> {
     final List<AthkarModel> list =
     widget.type == 'sabah' ? athkarList.map((e) => AthkarModel.fromJson(e)).toList() : athkarMap.map((e) => AthkarModel.fromJson(e)).toList() ;
 
+    final String title = widget.type == 'sabah' ? 'أذكار الصباح' : 'أذكار المساء';
+
     return Scaffold(
-      appBar: AthkarAppBar(),
+      appBar: AthkarAppBar(title: title,),
       body: SingleChildScrollView(
         child: Column(
           children: [

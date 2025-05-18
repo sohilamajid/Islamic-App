@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:hive_flutter/hive_flutter.dart';
+import 'package:islamic/features/athkar/presentation/widgets/notification_service.dart';
 import 'features/splash/presentation/view/splash_screen.dart';
 import 'features/tasbih/cubit/athkar_cubit.dart';
 import 'features/tasbih/hive_helper.dart';
@@ -12,6 +13,10 @@ void main() async {
   await Hive.initFlutter();
   await Hive.openBox(HiveHelper.tasbihBox);
   await HiveHelper.initializeTasbihList();
+  WidgetsFlutterBinding.ensureInitialized();
+  //init notifications
+  await NotificationService().initNotification();
+
   runApp(const MyApp());
 }
 

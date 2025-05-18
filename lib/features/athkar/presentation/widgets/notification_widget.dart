@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:islamic/features/athkar/presentation/widgets/notification_service.dart';
 import '../../../../const.dart';
 
 class NotificationScreen extends StatefulWidget {
@@ -54,6 +55,12 @@ class _NotificationScreenState extends State<NotificationScreen> {
                   onChanged: (value) {
                     setState(() {
                       notificationsEnabled = value;
+                      NotificationService().scheduleNotification(
+                          title: "أذكار الصباح",
+                          body: "لا تنس قراءتها",
+                          hour: selectedTime.hour,
+                          minute: selectedTime.minute,
+                      );
                     });
                   },
                   activeColor: Colors.white,
@@ -76,6 +83,16 @@ class _NotificationScreenState extends State<NotificationScreen> {
                 ],
               ),
             ),
+            // ElevatedButton(
+            //     onPressed: () {
+            //       NotificationService().scheduleNotification(
+            //           title: "test",
+            //           body: "now",
+            //           hour: 22,
+            //           minute: 22,
+            //           );
+            //     },
+            //     child: Text("scheduled Notification"),),
           ],
         ),
       ),

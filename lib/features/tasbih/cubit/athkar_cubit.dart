@@ -17,9 +17,10 @@ class AthkarCubit extends Cubit<AthkarState> {
   int count = 0;
 
   void resetCount(){
+    emit(AthkarLoading());
     HiveHelper.resetCount();
-    totalCount = 0;
-    count = 0;
+    totalCount = HiveHelper.getTotalCount();
+    count = HiveHelper.getCount(selectedThikr);
     emit(AthkarGetSuccess());
   }
 

@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../const.dart';
 class AthkarAppBar extends StatelessWidget implements PreferredSizeWidget{
-  const AthkarAppBar({super.key});
+  final String title ;
+  const AthkarAppBar({super.key, required this.title});
 
   @override
   Widget build(BuildContext context) {
@@ -10,7 +11,7 @@ class AthkarAppBar extends StatelessWidget implements PreferredSizeWidget{
       elevation: 0,
       backgroundColor: AppColors.blueColor,
       title: Text(
-        "أذكار الصباح",
+        title,
         style: TextStyle(
           fontSize: 20.sp,
           fontWeight: FontWeight.bold,

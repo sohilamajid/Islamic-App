@@ -7,7 +7,6 @@ class TasbihAppBar extends StatelessWidget implements PreferredSizeWidget {
   final void Function()? onTap;
   const TasbihAppBar({super.key, this.onPressed, this.onTap});
 
-
   void showDeleteDialog(BuildContext context) {
     showDialog(
       context: context,
@@ -27,7 +26,7 @@ class TasbihAppBar extends StatelessWidget implements PreferredSizeWidget {
       ),
     );
   }
-  void showHistoryDialog(BuildContext context) async{
+  static Future<void> showHistoryDialog(BuildContext context, {VoidCallback? onDelete}) async {
     await HiveHelper.getList();
     int totalCount = HiveHelper.getTotalCount();
 
@@ -40,15 +39,16 @@ class TasbihAppBar extends StatelessWidget implements PreferredSizeWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text("سجل التسبيحات",style: TextStyle(
-                  fontSize: 20.sp,
-                ),),
+                Text("سجل التسبيحات", style: TextStyle(fontSize: 20.sp)),
                 InkWell(
-                  onTap: () => showDeleteDialog(context),
-                    child: Icon(Icons.delete,color: Colors.red,)),
+                  onTap: () {
+                    if (onDelete != null) onDelete();
+                  },
+                  child: Icon(Icons.delete, color: Colors.red),
+                ),
               ],
             ),
-            SizedBox(height: 10.h,),
+            SizedBox(height: 10.h),
             for (var item in HiveHelper.tasbihList)
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -73,7 +73,6 @@ class TasbihAppBar extends StatelessWidget implements PreferredSizeWidget {
       ),
     );
   }
-
   @override
   Widget build(BuildContext context) {
     return AppBar(
@@ -93,6 +92,4 @@ class TasbihAppBar extends StatelessWidget implements PreferredSizeWidget {
   }
   @override
   Size get preferredSize => const Size.fromHeight(kToolbarHeight);
-
-
 }

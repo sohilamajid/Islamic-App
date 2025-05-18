@@ -15,7 +15,10 @@ class HiveHelper {
   }
 
   static void resetCount()async{
-
+    for (var thikr in ['استغفر الله', 'الحمد لله', 'سبحان الله', 'الله أكبر']) {
+      saveCount(thikr, 0);
+    }
+    await getList();
   }
 
   static int getCount(String thikr) {

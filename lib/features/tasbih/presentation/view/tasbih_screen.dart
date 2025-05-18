@@ -25,11 +25,19 @@ class _TasbihScreenState extends State<TasbihScreen> {
           final cubit = context.read<AthkarCubit>();
           return Scaffold(
             appBar: TasbihAppBar(onPressed: () {
-              cubit.removeAll();
+              cubit.resetCount();
               Navigator.pop(context);
             },
               onTap: () {
-                // appBar.showHistoryDialog(context);
+                TasbihAppBar.showHistoryDialog(
+                  context,
+                  onDelete: () {
+                    TasbihAppBar(onPressed: () {
+                      cubit.resetCount();
+                      Navigator.pop(context);
+                    }).showDeleteDialog(context);
+                  },
+                );
               },
             ),
             body: Center(

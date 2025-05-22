@@ -4,31 +4,31 @@ final List<Map<String, dynamic>> prayerTimes = [
   {
     "icon": Icons.nights_stay_outlined,
     "name": "الفجر",
-    "time": "٤:٢٥ ص",
+    "key": "Fajr",
   },
   {
     "icon": Icons.wb_sunny_outlined,
     "name": "الشروق",
-    "time": "٥:٤٥ ص",
+    "key": "Sunrise",
   },
   {
     "icon": Icons.brightness_high,
     "name": "الظهر",
-    "time": "١٢:٣٠ م",
+    "key": "Dhuhr",
   },
   {
     "icon": Icons.wb_twilight,
     "name": "العصر",
-    "time": "٣:٤٥ م",
+    "key": "Asr",
   },
   {
     "icon": Icons.nightlight_outlined,
     "name": "المغرب",
-    "time": "٦:١٥ م",
+    "key": "Maghrib",
   },
   {
     "icon": Icons.nights_stay,
     "name": "العشاء",
-    "time": "٧:٣٠ م",
+    "key": "Isha",
   },
 ];

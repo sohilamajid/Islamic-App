@@ -53,6 +53,44 @@ class _AthkarScreenState extends State<AthkarScreen> {
         child: Column(
           children: [
             NotificationScreen(),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 16),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  TextButton(
+                    onPressed: _currentPage > 0
+                        ? () {
+                      setState(() {
+                        _currentPage--;
+                        _pageController.animateToPage(
+                          _currentPage,
+                          duration: const Duration(milliseconds: 300),
+                          curve: Curves.easeInOut,
+                        );
+                      });
+                    }
+                        : null,
+                    child: const Text("السابق", style: TextStyle(color: Colors.black,fontWeight: FontWeight.bold)),
+                  ),
+                  TextButton(
+                    onPressed: _currentPage < list.length - 1
+                        ? () {
+                      setState(() {
+                        _currentPage++;
+                        _pageController.animateToPage(
+                          _currentPage,
+                          duration: const Duration(milliseconds: 300),
+                          curve: Curves.easeInOut,
+                        );
+                      });
+                    }
+                        : null,
+                    child: const Text("التالي", style: TextStyle(color: Colors.black,fontWeight: FontWeight.bold)),
+                  ),
+                ],
+              ),
+            ),
             SizedBox(
               height: 480.h,
               child: PageView.builder(

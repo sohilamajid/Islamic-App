@@ -15,7 +15,7 @@ class HiveHelper {
   }
 
   static void resetCount()async{
-    for (var thikr in ['استغفر الله', 'الحمد لله', 'سبحان الله', 'الله أكبر']) {
+    for (var thikr in ['لا إله إلا الله','استغفر الله', 'الحمد لله', 'سبحان الله', 'الله أكبر']) {
       saveCount(thikr, 0);
     }
     await getList();
@@ -42,6 +42,7 @@ class HiveHelper {
           {'text': 'الحمد لله', 'count': getCount('الحمد لله')},
           {'text': 'سبحان الله', 'count': getCount('سبحان الله')},
           {'text': 'الله أكبر', 'count': getCount('الله أكبر')},
+          {'text': 'لا إله إلا الله', 'count': getCount('لا إله إلا الله')},
         ];
       }
     }

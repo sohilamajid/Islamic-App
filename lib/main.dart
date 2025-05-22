@@ -31,16 +31,13 @@ class MyApp extends StatelessWidget {
       minTextAdapt: true,
       splitScreenMode: true,
       builder: (_, child) {
-        return BlocProvider(
-          create: (context) => AthkarCubit(),
-          child: GetMaterialApp(
-            theme: ThemeData(
-              fontFamily: 'Cairo',
-            ),
-            locale: const Locale("ar"),
-            debugShowCheckedModeBanner: false,
-            home: const SplashScreen(),
+        return GetMaterialApp(
+          theme: ThemeData(
+            fontFamily: 'Cairo',
           ),
+          locale: const Locale("ar"),
+          debugShowCheckedModeBanner: false,
+          home: const SplashScreen(),
         );
       },
     );

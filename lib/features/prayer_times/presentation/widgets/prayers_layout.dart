@@ -4,9 +4,11 @@ class PrayersLayout extends StatelessWidget {
   const PrayersLayout({
     super.key,
     required this.prayer,
+    required this.timing,
   });
 
   final Map<String, dynamic> prayer;
+  final dynamic timing;
 
   @override
   Widget build(BuildContext context) {
@@ -31,7 +33,7 @@ class PrayersLayout extends StatelessWidget {
                 fontWeight: FontWeight.bold,
               ),),
               Spacer(),
-              Text(prayer["time"],style: TextStyle(
+              Text(convertToArabicNumbers(timing),style: TextStyle(
                 color: Colors.black,
                 fontSize: 20.sp,
                 fontWeight: FontWeight.bold,
@@ -41,5 +43,14 @@ class PrayersLayout extends StatelessWidget {
         ),
       ),
     );
+  }
+  String convertToArabicNumbers(String input) {
+    const englishDigits = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
+    const arabicDigits = ['٠', '١', '٢', '٣', '٤', '٥', '٦', '٧', '٨', '٩'];
+
+    for (int i = 0; i < englishDigits.length; i++) {
+      input = input.replaceAll(englishDigits[i], arabicDigits[i]);
+    }
+    return input;
   }
 }

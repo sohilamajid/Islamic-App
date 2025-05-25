@@ -17,7 +17,7 @@ class _PrayerTimeScreenState extends State<PrayerTimeScreen> {
 
   late Data prayer;
 
-  static String city = 'Cairo';
+  static String city = 'Menofia';
   static String country = 'Egypt';
   static int method = 5;
 

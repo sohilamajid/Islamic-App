@@ -6,6 +6,8 @@ part 'athkar_state.dart';
 class AthkarCubit extends Cubit<AthkarState> {
   AthkarCubit() : super(AthkarInitial());
   int totalCount = 0 ;
+  int historyCount = 0;
+  int historyTotalCount = 0;
   List<String> athkarList = [
     'استغفر الله',
     'الحمد لله',
@@ -27,6 +29,8 @@ class AthkarCubit extends Cubit<AthkarState> {
   void loadCount() {
       totalCount = HiveHelper.getTotalCount();
       count = HiveHelper.getCount(selectedThikr);
+      historyCount = HiveHelper.getHistoryCount(selectedThikr);
+      historyTotalCount = HiveHelper.getHistoryTotalCount();
       emit(AthkarGetSuccess());
   }
   void incrementCount() {
@@ -34,6 +38,8 @@ class AthkarCubit extends Cubit<AthkarState> {
     totalCount++;
     HiveHelper.saveCount(selectedThikr, count);
     HiveHelper.getList();
+    historyCount = HiveHelper.getHistoryCount(selectedThikr);
+    historyTotalCount = HiveHelper.getHistoryTotalCount();
     emit(AthkarGetSuccess());
   }
 
@@ -50,7 +56,7 @@ class AthkarCubit extends Cubit<AthkarState> {
   void removeAll() async {
     emit(AthkarLoading());
     await HiveHelper.removeAll();
-    emit(AthkarGetSuccess());
+    emit(AthkarGetDeleteSuccess());
   }
 
   void getList()async{

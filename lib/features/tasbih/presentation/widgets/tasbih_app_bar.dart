@@ -49,17 +49,17 @@ class TasbihAppBar extends StatelessWidget implements PreferredSizeWidget {
               ],
             ),
             SizedBox(height: 10.h),
-            for (var item in HiveHelper.tasbihList)
+            for (var thikr in ['استغفر الله', 'الحمد لله', 'سبحان الله', 'الله أكبر', 'لا إله إلا الله'])
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Text('${item['text']}:'),
-                  Text('${item['count']}'),
+                  Text('$thikr:'),
+                  Text('${HiveHelper.getHistoryCount(thikr)}'),
                 ],
               ),
             Divider(),
             Text(
-              'إجمالي التسبيحات: $totalCount',
+              'إجمالي التسبيحات: ${HiveHelper.getHistoryTotalCount()}',
               style: TextStyle(fontWeight: FontWeight.bold),
             ),
           ],

@@ -5,6 +5,6 @@ sealed class AthkarState {}
 
 final class AthkarInitial extends AthkarState {}
 final class AthkarLoading extends AthkarState {}
-final class AthkarGetSuccess extends AthkarState {
-}
+final class AthkarGetSuccess extends AthkarState {}
+final class AthkarGetDeleteSuccess extends AthkarState {}
 
